@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- 时钟应用的自定义颜色 -->
+    <color name="background">#FF1C1C1E</color>
+    <color name="clock_face">#FF2C2C2E</color>
+    <color name="clock_border">#FF48484A</color>
+    <color name="hour_hand">#FFFFFFFF</color>
+    <color name="minute_hand">#FFFFFFFF</color>
+    <color name="second_hand">#FF0A84FF</color>
+    <color name="digital_text">#FFFFFFFF</color>
+    <color name="date_text">#99FFFFFF</color>
+    <color name="tick_marks">#99FFFFFF</color>
+    <color name="center_dot">#FF0A84FF</color>
 </resources>
