@@ -147,6 +147,7 @@ app/
 
 - [小部件开发文档](docs/widget_development.md)
 - [闹钟功能开发文档](docs/alarm_development.md)
+- [倒计时功能开发文档](docs/timer_development.md)
 
 ## 已修复问题
 
