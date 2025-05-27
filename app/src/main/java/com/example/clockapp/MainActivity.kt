@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.clockapp.ui.AlarmFragment
 import com.example.clockapp.ui.ClockFragment
+import com.example.clockapp.ui.TimerFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity() {
                     viewPager.currentItem = 1
                     true
                 }
+                R.id.nav_timer -> {
+                    viewPager.currentItem = 2
+                    true
+                }
                 else -> false
             }
         }
@@ -50,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 bottomNav.selectedItemId = when (position) {
                     0 -> R.id.nav_clock
                     1 -> R.id.nav_alarm
+                    2 -> R.id.nav_timer
                     else -> R.id.nav_clock
                 }
             }
@@ -60,12 +66,13 @@ class MainActivity : AppCompatActivity() {
      * ViewPager适配器
      */
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = 3
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> ClockFragment()
                 1 -> AlarmFragment()
+                2 -> TimerFragment()
                 else -> ClockFragment()
             }
         }

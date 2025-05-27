@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景圆环 -->
+    <item>
+        <shape android:shape="ring"
+            android:thicknessRatio="16"
+            android:useLevel="false">
+            <solid android:color="@color/progress_background" />
+        </shape>
+    </item>
+    <!-- 进度圆环 -->
+    <item>
+        <shape android:shape="ring"
+            android:thicknessRatio="16"
+            android:useLevel="true">
+            <gradient
+                android:type="sweep"
+                android:startColor="@color/teal_200"
+                android:endColor="@color/teal_200" />
+        </shape>
+    </item>
+</layer-list> 

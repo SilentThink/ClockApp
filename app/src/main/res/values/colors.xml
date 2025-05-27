@@ -23,4 +23,10 @@
     <color name="date_text">#99FFFFFF</color>
     <color name="tick_marks">#99FFFFFF</color>
     <color name="center_dot">#FF0A84FF</color>
+    
+    <!-- 倒计时相关颜色 -->
+    <color name="orange_500">#FFFF9800</color>
+    <color name="red_500">#FFF44336</color>
+    <color name="red_700">#FFD32F2F</color>
+    <color name="progress_background">#33FFFFFF</color>
 </resources>

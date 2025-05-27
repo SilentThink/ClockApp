@@ -15,4 +15,10 @@
         <item name="colorAccent">@color/teal_200</item>
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    
+    <!-- NumberPicker样式 -->
+    <style name="NumberPickerStyle">
+        <item name="android:textColorPrimary">@color/digital_text</item>
+        <item name="colorControlNormal">@color/teal_200</item>
+    </style>
 </resources>
