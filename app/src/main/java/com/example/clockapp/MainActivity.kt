@@ -1,49 +1,73 @@
 package com.example.clockapp
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.example.clockapp.ui.AlarmFragment
+import com.example.clockapp.ui.ClockFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var digitalTimeView: TextView
-    private lateinit var dateView: TextView
-    private val handler = Handler(Looper.getMainLooper())
-    private val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-    private val dateFormat = SimpleDateFormat("yyyy年MM月dd日 EEEE", Locale.CHINESE)
 
-    private val updateTimeRunnable = object : Runnable {
-        override fun run() {
-            updateTime()
-            handler.postDelayed(this, 1000)
-        }
-    }
+    private lateinit var viewPager: ViewPager2
+    private lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        digitalTimeView = findViewById(R.id.digitalTime)
-        dateView = findViewById(R.id.dateText)
+        viewPager = findViewById(R.id.view_pager)
+        bottomNav = findViewById(R.id.bottom_navigation)
+
+        // 设置ViewPager适配器
+        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        viewPager.adapter = pagerAdapter
+        
+        // 禁用ViewPager2的滑动功能，只通过底部导航栏切换
+        viewPager.isUserInputEnabled = false
+
+        // 设置底部导航栏点击事件
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_clock -> {
+                    viewPager.currentItem = 0
+                    true
+                }
+                R.id.nav_alarm -> {
+                    viewPager.currentItem = 1
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // 设置ViewPager页面切换监听
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                bottomNav.selectedItemId = when (position) {
+                    0 -> R.id.nav_clock
+                    1 -> R.id.nav_alarm
+                    else -> R.id.nav_clock
+                }
+            }
+        })
     }
 
-    override fun onResume() {
-        super.onResume()
-        handler.post(updateTimeRunnable)
-    }
+    /**
+     * ViewPager适配器
+     */
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+        override fun getItemCount(): Int = 2
 
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(updateTimeRunnable)
-    }
-
-    private fun updateTime() {
-        val currentTime = Date()
-        digitalTimeView.text = timeFormat.format(currentTime)
-        dateView.text = dateFormat.format(currentTime)
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> ClockFragment()
+                1 -> AlarmFragment()
+                else -> ClockFragment()
+            }
+        }
     }
 }

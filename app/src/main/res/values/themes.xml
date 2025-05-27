@@ -7,4 +7,12 @@
         <item name="colorAccent">@color/teal_200</item>
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    
+    <!-- 带有ActionBar的主题，用于闹钟编辑活动 -->
+    <style name="Theme.ClockApp.WithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
 </resources>
