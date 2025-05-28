@@ -10,16 +10,32 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/edit_alarm_time"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="00:00"
-            android:textSize="56sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/edit_alarm_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="00:00"
+                android:textSize="56sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/voice_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="语音设置"
+                app:srcCompat="@drawable/ic_mic"
+                app:fabSize="mini" />
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
